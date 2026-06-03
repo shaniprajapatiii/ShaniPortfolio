@@ -7,7 +7,7 @@ export const SITE = {
    socials: {
       github: "https://github.com/shaniprajapatiii",
       linkedin: "https://www.linkedin.com/in/shaniprajapatiii",
-      twitter: "https://twitter.com/shaniprajapatiii",
+      twitter: "https://twitter.com/shaniprajapatii",
       leetcode: "https://leetcode.com/shaniprajapatiii",
       codeforces: "https://codeforces.com/profile/shaniprajapati",
    },
@@ -26,7 +26,7 @@ export const NAV = [
 export const METRICS = [
    { value: "15+", label: "Projects Built" },
    { value: "500+", label: "Problems Solved" },
-   { value: "100+", label: "Contests" },
+   { value: "40+", label: "Contests" },
    { value: "20+", label: "Technologies" },
 ];
 
@@ -78,22 +78,20 @@ export const PROJECTS = [
   },
   {
     slug: "portfolio",
-    name: "Full-Stack Portfolio Website",
+    name: "Portfolio Website",
     tagline: "Dynamic, responsive portfolio with an admin panel for real-time content management",
     description:
-      "Full-stack portfolio website with an admin dashboard for dynamic content management, built with React, TypeScript, Node.js, Express, and MongoDB.",
+      "Portfolio website with multiple sections, separate pages and a blog, built with Next.js, JavaScript and Tailwind CSS.",
     category: "Web",
     status: "Ongoing",
-    stack: ["React", "TypeScript", "Node.js", "Express.js", "MongoDB"],
+    stack: ["Next.js", "JavaScript", "Tailwind CSS"],
     featured: false,
     href: "https://shaniprajapati.vercel.app",
-    repo: "https://github.com/shaniprajapatiii/Shani-Prajapati-FullStack-Portfolio",
-    image:
-      "https://res.cloudinary.com/dwagwbnhm/image/upload/v1766345162/portfolio_hfau1c.png",
+    repo: "https://github.com/shaniprajapatiii/ShaniPortfolio",
   },
   {
-    slug: "tic-tac-glow",
-    name: "Tic Tac Glow",
+    slug: "Tic Tac Toe",
+    name: "Tic Tac Toe Game",
     tagline: "Interactive Tic Tac Toe game with automatic win and draw detection",
     description:
       "Web-based Tic Tac Toe game developed using HTML, CSS, and JavaScript with win/draw detection and responsive UI.",
@@ -103,42 +101,40 @@ export const PROJECTS = [
     featured: false,
     href: "https://tictactoe-e.netlify.app",
     repo: "https://github.com/shaniprajapatiii/tic-tac-toe",
-    image:
-      "https://res.cloudinary.com/dwagwbnhm/image/upload/v1765922850/kinetic-drop-site/1765922849534-729bbd0a-bacc-4bcc-9721-f1f77328959f.png",
   },
 ];
 
-export const FOCUS = ["System Design", "AI Engineering", "Cloud Computing", "Browser Internals"];
+export const FOCUS = ["Data Structures & Algorithms", "System Design", "Machine Learning","Browser Internals"];
 
 export const TIMELINE = [
-   { year: "2022", title: "Started programming", body: "First lines of C++, fell in love with problem-solving." },
+   { year: "2022", title: "Started programming", body: "First lines of Java, fell in love with problem-solving." },
    { year: "2023", title: "Discovered DSA", body: "Began structured practice on LeetCode and Codeforces." },
    { year: "2024", title: "First major projects", body: "Shipped full-stack apps used by peers and community." },
    { year: "2025", title: "Hackathons & teams", body: "Led cross-functional teams; placed in multiple events." },
-   { year: "2026", title: "AI & products", body: "Building AI-native tools and exploring distributed systems." },
+   { year: "2026", title: "Exploring concepts of AI and Machine Learning", body: "Diving deep into neural networks, deep learning, and their applications." },
 ];
 
 export const CODING_PROFILES = [
    {
       platform: "LeetCode",
       handle: "shaniprajapatiii",
-      primary: "550+ solved",
-      secondary: "Contest rating 1850",
+      primary: "300+ solved",
+      secondary: "Contest rating 1576",
       url: "https://leetcode.com/shaniprajapatiii",
-      badges: ["Knight", "100 Days"],
+      badges: ["", "100 Days"],
    },
    {
       platform: "Codeforces",
       handle: "shaniprajapati",
-      primary: "Rating 1700",
-      secondary: "Max 1742 · Specialist",
+      primary: "Rating 1246",
+      secondary: "Max 1246 · 100+ solved",
       url: "https://codeforces.com/profile/shaniprajapati",
-      badges: ["Specialist"],
+      badges: ["Pupil"],
    },
    {
       platform: "GitHub",
       handle: "shaniprajapatiii",
-      primary: "1.2k contributions",
+      primary: "400+ contributions",
       secondary: "40+ repositories",
       url: "https://github.com/shaniprajapatiii",
       badges: ["Arctic Vault"],
@@ -171,7 +167,7 @@ export const EXPERIENCE = [
       org: "Various",
       period: "2024 — Present",
       summary: "Shipping fixes and features to TypeScript tooling and React component libraries.",
-      tags: ["TypeScript", "React", "Tooling"],
+      tags: ["JavaScript", "TypeScript", "React", "Next.js", "Express.js", "Node.js", "Tooling"],
    },
    {
       role: "Hackathon Lead",
@@ -182,15 +178,15 @@ export const EXPERIENCE = [
    },
    {
       role: "DSA Mentor",
-      org: "RGIPT Coding Club",
+      org: "GLBITM CDC Department",
       period: "2024 — Present",
       summary: "Mentor juniors on structured DSA practice and interview preparation.",
       tags: ["Mentorship", "DSA"],
    },
    {
       role: "Undergraduate Researcher",
-      org: "RGIPT",
-      period: "2025 — Present",
+      org: "GLBITM Information Technology Department",
+      period: "2 months in 2025",
       summary: "Exploring graph-based representations for citation analysis.",
       tags: ["Research", "Graphs", "ML"],
    },

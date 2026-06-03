@@ -5,7 +5,7 @@ import { TIMELINE } from "@/lib/site-data";
 export const metadata = {
    title: "About — Shani Prajapati",
    description:
-      "About Shani Prajapati — engineering background, education at RGIPT, journey from first lines of code to building AI products.",
+      "About Shani Prajapati — engineering background, education at GLBITM, journey from first lines of code to building AI products.",
    openGraph: {
       title: "About — Shani Prajapati",
       description: "Background, education, journey and philosophy.",
@@ -26,8 +26,8 @@ export default function AboutPage() {
                <div>
                   <h2 className="mb-3 text-2xl font-semibold">Background</h2>
                   <p className="text-muted-foreground">
-                     I'm an undergraduate at the Rajiv Gandhi Institute of Petroleum Technology, studying
-                     Computer Science & Design Engineering. I started writing code in 2022 and quickly fell
+                     I'm a 3rd-year student of GL Bajaj Institute of Technology and Management, studying
+                     Computer Science & Information Technology. I started writing code in 2022 and quickly fell
                      into competitive programming — the way it forces clear thinking still shapes how I
                      build today.
                   </p>
@@ -35,17 +35,16 @@ export default function AboutPage() {
                <div>
                   <h2 className="mb-3 text-2xl font-semibold">What I care about</h2>
                   <p className="text-muted-foreground">
-                     Software that is fast, honest about its limits and pleasant to use. Tools that compress
-                     the time between an idea and shipping it. Systems that scale because their design is
-                     simple, not because they bury complexity behind abstractions.
+                     As an computer science student, I care deeply about the craft of software engineering — writing clean, efficient code, designing scalable systems and building products that solve real problems. I'm
+                     passionate about learning new technologies and continuously improving my skills. I also
+                     care about the impact of technology on society and strive to build products that have a
+                     positive impact on people's lives.
                   </p>
                </div>
                <div>
                   <h2 className="mb-3 text-2xl font-semibold">What I'm aiming for</h2>
                   <p className="text-muted-foreground">
-                     Short term: world-class engineering internships, top contest performances and a small
-                     number of products that real people use. Long term: building infrastructure and tools
-                     that make other engineers measurably more productive.
+                     Short-term, I'm focused on building my skills and gaining experience through internships and personal projects. Long-term, I aspire to work at a company that values innovation and impact, where I can contribute to building products that make a difference in people's lives. Ultimately, I want to be part of the next wave of technology that shapes the future.
                   </p>
                </div>
             </article>
@@ -56,9 +55,13 @@ export default function AboutPage() {
                   <div className="mt-3 font-mono text-xs uppercase tracking-wider text-muted-foreground">
                      Education
                   </div>
-                  <div className="mt-2 text-lg font-semibold">RGIPT</div>
+                  <div className="mt-2 text-lg font-semibold">GL Bajaj Institute of Technology and Management</div>
                   <div className="text-sm text-muted-foreground">
-                     B.Tech · Computer Science & Design Engineering
+                     B.Tech · Computer Science & Information Technology
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                     Location: Greater Noida, Uttar Pradesh<br />
+                     Duration: 2024 - 2028
                   </div>
                </div>
                <div>
@@ -69,9 +72,11 @@ export default function AboutPage() {
                      {[
                         "Data Structures",
                         "Algorithms",
+                        "Object-Oriented Programming",
                         "Operating Systems",
                         "DBMS",
                         "Computer Networks",
+                        "Theory of Computation",
                         "Machine Learning",
                      ].map((course) => (
                         <span key={course} className="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px]">
