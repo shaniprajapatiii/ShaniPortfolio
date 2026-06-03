@@ -1,0 +1,123 @@
+{
+  "name": "Shani Prajapati",
+  "title": "Full Stack Developer | Competitive Programmer | Product Builder",
+  "location": "Greater Noida, India",
+  "links": {
+    "github": "https://github.com/shaniprajapatiii",
+    "linkedin": "https://www.linkedin.com/in/shaniprajapatiii",
+    "twitter": "https://twitter.com/shaniprajapatiii",
+    "email": "shaniprajapati630@gmail.com",
+    "leetcode": "https://leetcode.com/shaniprajapatiii",
+    "codeforces": "https://codeforces.com/profile/shaniprajapati",
+    "resume": "/SHANI-PRAJAPATI.pdf"
+  },
+  "contact": {
+    "email": "shaniprajapati630@gmail.com",
+    "phone": "+91 6307527959"
+  },
+  "projects": [
+    {
+      "title": "StudySphere - AI-Powered Learning Platform",
+      "shortDesc": "AI study platform that turns YouTube content into transcripts, summaries, and quizzes",
+      "description": "Built an AI-driven learning platform that transforms YouTube videos into interactive study guides with cleaned transcripts, concise summaries, generated quizzes, progress tracking, and playlist management.",
+      "live": "https://studysphere-x.vercel.app",
+      "repo": "https://github.com/shaniprajapatiii/StudySphere",
+      "technologies": [
+        "React",
+        "Express.js",
+        "MongoDB",
+        "Node.js",
+        "Google Gemini API",
+        "Tailwind CSS",
+        "Google OAuth",
+        "Docker"
+      ],
+      "image": "https://res.cloudinary.com/dwagwbnhm/image/upload/v1776704969/Screenshot_2026-04-20_223800_d0ycq8.png",
+      "duration": "Ongoing",
+      "team": "Solo Project",
+      "role": "Full Stack Developer"
+    },
+    {
+      "title": "Clover - AI-Powered Parametric Insurance Platform",
+      "shortDesc": "Full-stack insurtech platform protecting gig workers from weather and disruption-driven income loss",
+      "description": "Engineered a production-grade insurance platform combining AI risk scoring, parametric policy logic, real-time weather intelligence, and automated claims processing.",
+      "live": "https://cloverleaf-two.vercel.app",
+      "repo": "https://github.com/shaniprajapatiii/CLOVER",
+      "technologies": [
+        "React",
+        "Express.js",
+        "MongoDB",
+        "Node.js",
+        "Tailwind CSS",
+        "JWT",
+        "Zustand",
+        "Recharts",
+        "OpenWeather API",
+        "Node-Cron"
+      ],
+      "image": "https://res.cloudinary.com/dwagwbnhm/image/upload/v1775894804/Screenshot_2026-04-11_133555_z3c0fx.png",
+      "duration": "Ongoing",
+      "team": "Solo Project",
+      "role": "Full Stack Developer"
+    },
+    {
+      "title": "DataShield - AI-Powered Privacy Intelligence Platform",
+      "shortDesc": "Real-time privacy analysis platform that scans websites, detects permission risks, and turns complex policy data into clear insights",
+      "description": "Built a full-stack privacy intelligence platform that analyzes websites through policy extraction, permission detection, and NLP-based risk scoring, including a Chrome extension and live monitoring.",
+      "live": "https://github.com/shaniprajapatiii/DATA-SHIELD",
+      "repo": "https://github.com/shaniprajapatiii/DATA-SHIELD",
+      "technologies": [
+        "React",
+        "Express.js",
+        "Node.js",
+        "Python",
+        "MongoDB",
+        "Chrome Extension",
+        "Tailwind CSS",
+        "JWT",
+        "Docker"
+      ],
+      "image": "https://res.cloudinary.com/dwagwbnhm/image/upload/v1775894698/Screenshot_392_wn0k4y.png",
+      "duration": "Ongoing",
+      "team": "Solo Project",
+      "role": "Full Stack Developer"
+    },
+    {
+      "title": "Full-Stack Portfolio Website",
+      "shortDesc": "Dynamic, responsive portfolio with an admin panel for real-time content management",
+      "description": "Full-stack portfolio website with an admin dashboard for dynamic content management, built with React, TypeScript, Node.js, Express, and MongoDB.",
+      "live": "https://shaniprajapati.vercel.app",
+      "repo": "https://github.com/shaniprajapatiii/Shani-Prajapati-FullStack-Portfolio",
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Tailwind CSS",
+        "JWT",
+        "Cloudinary"
+      ],
+      "image": "https://res.cloudinary.com/dwagwbnhm/image/upload/v1766345162/portfolio_hfau1c.png",
+      "duration": "Ongoing",
+      "team": "Solo Project",
+      "role": "Full Stack Developer"
+    },
+    {
+      "title": "Tic Tac Glow",
+      "shortDesc": "Interactive Tic Tac Toe game with automatic win and draw detection",
+      "description": "Web-based Tic Tac Toe game developed using HTML, CSS, and JavaScript with win/draw detection and responsive UI.",
+      "live": "https://tictactoe-e.netlify.app",
+      "repo": "https://github.com/shaniprajapatiii/tic-tac-toe",
+      "technologies": [
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "image": "https://res.cloudinary.com/dwagwbnhm/image/upload/v1765922850/kinetic-drop-site/1765922849534-729bbd0a-bacc-4bcc-9721-f1f77328959f.png",
+      "duration": "Completed",
+      "team": "Solo Project",
+      "role": "Frontend Developer"
+    }
+  ]
+}

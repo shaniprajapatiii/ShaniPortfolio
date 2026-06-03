@@ -1,0 +1,248 @@
+export const SITE = {
+   name: "Shani Prajapati",
+   role: "Full Stack Developer | Competitive Programmer | Product Builder",
+   email: "shaniprajapati630@gmail.com",
+   location: "Greater Noida, India",
+   resumeUrl: "/SHANI-PRAJAPATI.pdf",
+   socials: {
+      github: "https://github.com/shaniprajapatiii",
+      linkedin: "https://www.linkedin.com/in/shaniprajapatiii",
+      twitter: "https://twitter.com/shaniprajapatiii",
+      leetcode: "https://leetcode.com/shaniprajapatiii",
+      codeforces: "https://codeforces.com/profile/shaniprajapati",
+   },
+};
+
+export const NAV = [
+   { href: "/", label: "Home" },
+   { href: "/about", label: "About" },
+   { href: "/projects", label: "Projects" },
+   { href: "/coding", label: "Coding" },
+   { href: "/experience", label: "Experience" },
+   { href: "/articles", label: "Articles" },
+   { href: "/contact", label: "Contact" },
+];
+
+export const METRICS = [
+   { value: "15+", label: "Projects Built" },
+   { value: "500+", label: "Problems Solved" },
+   { value: "100+", label: "Contests" },
+   { value: "20+", label: "Technologies" },
+];
+
+export const PROJECTS = [
+  {
+    slug: "studysphere",
+    name: "StudySphere - AI-Powered Learning Platform",
+    tagline: "AI study platform that turns YouTube content into transcripts, summaries, and quizzes",
+    description:
+      "Built an AI-driven learning platform that transforms YouTube videos into interactive study guides with cleaned transcripts, concise summaries, generated quizzes, progress tracking, and playlist management.",
+    category: "Full-Stack",
+    status: "Ongoing",
+    stack: ["React", "Express.js", "MongoDB", "Node.js", "Tailwind CSS"],
+    featured: true,
+    href: "https://studysphere-x.vercel.app",
+    repo: "https://github.com/shaniprajapatiii/StudySphere",
+    image:
+      "https://res.cloudinary.com/dwagwbnhm/image/upload/v1776704969/Screenshot_2026-04-20_223800_d0ycq8.png",
+  },
+  {
+    slug: "clover",
+    name: "Clover - AI-Powered Parametric Insurance Platform",
+    tagline: "Full-stack insurtech platform protecting gig workers from weather and disruption-driven income loss",
+    description:
+      "Engineered a production-grade insurance platform combining AI risk scoring, parametric policy logic, real-time weather intelligence, and automated claims processing.",
+    category: "Full-Stack",
+    status: "Ongoing",
+    stack: ["React", "Express.js", "MongoDB", "Node.js", "Tailwind CSS"],
+    featured: true,
+    href: "https://cloverleaf-two.vercel.app",
+    repo: "https://github.com/shaniprajapatiii/CLOVER",
+    image:
+      "https://res.cloudinary.com/dwagwbnhm/image/upload/v1775894804/Screenshot_2026-04-11_133555_z3c0fx.png",
+  },
+  {
+    slug: "datashield",
+    name: "DataShield - AI-Powered Privacy Intelligence Platform",
+    tagline: "Real-time privacy analysis platform that scans websites, detects permission risks, and turns complex policy data into clear insights",
+    description:
+      "Built a full-stack privacy intelligence platform that analyzes websites through policy extraction, permission detection, and NLP-based risk scoring, including a Chrome extension and live monitoring.",
+    category: "Full-Stack",
+    status: "Ongoing",
+    stack: ["React", "Express.js", "Node.js", "Python", "MongoDB"],
+    featured: true,
+    href: "https://github.com/shaniprajapatiii/DATA-SHIELD",
+    repo: "https://github.com/shaniprajapatiii/DATA-SHIELD",
+    image:
+      "https://res.cloudinary.com/dwagwbnhm/image/upload/v1775894698/Screenshot_392_wn0k4y.png",
+  },
+  {
+    slug: "portfolio",
+    name: "Full-Stack Portfolio Website",
+    tagline: "Dynamic, responsive portfolio with an admin panel for real-time content management",
+    description:
+      "Full-stack portfolio website with an admin dashboard for dynamic content management, built with React, TypeScript, Node.js, Express, and MongoDB.",
+    category: "Web",
+    status: "Ongoing",
+    stack: ["React", "TypeScript", "Node.js", "Express.js", "MongoDB"],
+    featured: false,
+    href: "https://shaniprajapati.vercel.app",
+    repo: "https://github.com/shaniprajapatiii/Shani-Prajapati-FullStack-Portfolio",
+    image:
+      "https://res.cloudinary.com/dwagwbnhm/image/upload/v1766345162/portfolio_hfau1c.png",
+  },
+  {
+    slug: "tic-tac-glow",
+    name: "Tic Tac Glow",
+    tagline: "Interactive Tic Tac Toe game with automatic win and draw detection",
+    description:
+      "Web-based Tic Tac Toe game developed using HTML, CSS, and JavaScript with win/draw detection and responsive UI.",
+    category: "Frontend",
+    status: "Completed",
+    stack: ["JavaScript", "HTML", "CSS"],
+    featured: false,
+    href: "https://tictactoe-e.netlify.app",
+    repo: "https://github.com/shaniprajapatiii/tic-tac-toe",
+    image:
+      "https://res.cloudinary.com/dwagwbnhm/image/upload/v1765922850/kinetic-drop-site/1765922849534-729bbd0a-bacc-4bcc-9721-f1f77328959f.png",
+  },
+];
+
+export const FOCUS = ["System Design", "AI Engineering", "Cloud Computing", "Browser Internals"];
+
+export const TIMELINE = [
+   { year: "2022", title: "Started programming", body: "First lines of C++, fell in love with problem-solving." },
+   { year: "2023", title: "Discovered DSA", body: "Began structured practice on LeetCode and Codeforces." },
+   { year: "2024", title: "First major projects", body: "Shipped full-stack apps used by peers and community." },
+   { year: "2025", title: "Hackathons & teams", body: "Led cross-functional teams; placed in multiple events." },
+   { year: "2026", title: "AI & products", body: "Building AI-native tools and exploring distributed systems." },
+];
+
+export const CODING_PROFILES = [
+   {
+      platform: "LeetCode",
+      handle: "shaniprajapatiii",
+      primary: "550+ solved",
+      secondary: "Contest rating 1850",
+      url: "https://leetcode.com/shaniprajapatiii",
+      badges: ["Knight", "100 Days"],
+   },
+   {
+      platform: "Codeforces",
+      handle: "shaniprajapati",
+      primary: "Rating 1700",
+      secondary: "Max 1742 · Specialist",
+      url: "https://codeforces.com/profile/shaniprajapati",
+      badges: ["Specialist"],
+   },
+   {
+      platform: "GitHub",
+      handle: "shaniprajapatiii",
+      primary: "1.2k contributions",
+      secondary: "40+ repositories",
+      url: "https://github.com/shaniprajapatiii",
+      badges: ["Arctic Vault"],
+   },
+];
+
+export const TOPICS = [
+   { name: "Arrays", solved: 92, level: "Strong" },
+   { name: "Strings", solved: 64, level: "Strong" },
+   { name: "Trees", solved: 58, level: "Strong" },
+   { name: "Graphs", solved: 71, level: "Strong" },
+   { name: "Dynamic Programming", solved: 88, level: "Strong" },
+   { name: "Greedy", solved: 41, level: "Comfortable" },
+   { name: "Binary Search", solved: 36, level: "Comfortable" },
+   { name: "Backtracking", solved: 22, level: "Comfortable" },
+   { name: "Segment Trees", solved: 18, level: "Learning" },
+];
+
+export const CONTESTS = [
+   { name: "Weekly Contest 412", platform: "LeetCode", rank: 1834, delta: "+38", date: "2025-11-09" },
+   { name: "Round 985 Div 3", platform: "Codeforces", rank: 2210, delta: "+62", date: "2025-10-26" },
+   { name: "Biweekly 142", platform: "LeetCode", rank: 2105, delta: "+24", date: "2025-10-19" },
+   { name: "Round 981 Div 2", platform: "Codeforces", rank: 4120, delta: "-31", date: "2025-10-05" },
+   { name: "Weekly Contest 408", platform: "LeetCode", rank: 1502, delta: "+48", date: "2025-09-28" },
+];
+
+export const EXPERIENCE = [
+   {
+      role: "Open Source Contributor",
+      org: "Various",
+      period: "2024 — Present",
+      summary: "Shipping fixes and features to TypeScript tooling and React component libraries.",
+      tags: ["TypeScript", "React", "Tooling"],
+   },
+   {
+      role: "Hackathon Lead",
+      org: "Smart India Hackathon & campus events",
+      period: "2024 — 2025",
+      summary: "Led 4-person teams across three hackathons; built MVPs end-to-end in under 36 hours.",
+      tags: ["Leadership", "Full-stack", "Product"],
+   },
+   {
+      role: "DSA Mentor",
+      org: "RGIPT Coding Club",
+      period: "2024 — Present",
+      summary: "Mentor juniors on structured DSA practice and interview preparation.",
+      tags: ["Mentorship", "DSA"],
+   },
+   {
+      role: "Undergraduate Researcher",
+      org: "RGIPT",
+      period: "2025 — Present",
+      summary: "Exploring graph-based representations for citation analysis.",
+      tags: ["Research", "Graphs", "ML"],
+   },
+];
+
+export const ARTICLES = [
+   {
+      slug: "thinking-in-segments",
+      title: "Thinking in Segments",
+      description: "A practitioner's intuition for segment trees, without the academic baggage.",
+      category: "Algorithms",
+      readTime: "9 min",
+      date: "2025-10-14",
+   },
+   {
+      slug: "ship-first-debug-later",
+      title: "Ship First, Debug Later",
+      description: "Why I stopped chasing perfect MVPs and started shipping rough ones.",
+      category: "Career Growth",
+      readTime: "5 min",
+      date: "2025-09-02",
+   },
+   {
+      slug: "react-server-mental-model",
+      title: "A Mental Model for React Server Components",
+      description: "The smallest set of ideas you need to reason about RSC boundaries.",
+      category: "Web Development",
+      readTime: "11 min",
+      date: "2025-08-18",
+   },
+   {
+      slug: "rating-is-noise",
+      title: "Your Rating Is Mostly Noise",
+      description: "What 100 contests taught me about variance and what to actually optimise for.",
+      category: "Algorithms",
+      readTime: "6 min",
+      date: "2025-07-05",
+   },
+   {
+      slug: "designing-dsa-tracker",
+      title: "Designing DSA Tracker",
+      description: "How a personal pain point became a tool used by 200+ students.",
+      category: "Projects",
+      readTime: "8 min",
+      date: "2025-05-22",
+   },
+   {
+      slug: "system-design-self-study",
+      title: "A Self-Study Plan for System Design",
+      description: "The exact books, talks and exercises I used over six months.",
+      category: "System Design",
+      readTime: "12 min",
+      date: "2025-03-11",
+   },
+];

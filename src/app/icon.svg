@@ -1,0 +1,73 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg-light,
+    .ring-light,
+    .accent-light,
+    .spark-light,
+    .monogram-light {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: light) {
+      .bg-dark,
+      .ring-dark,
+      .accent-dark,
+      .spark-dark,
+      .monogram-dark {
+        display: none;
+      }
+
+      .bg-light,
+      .ring-light,
+      .accent-light,
+      .spark-light,
+      .monogram-light {
+        display: block;
+      }
+    }
+  </style>
+  <defs>
+    <linearGradient id="bg-dark" x1="96" y1="64" x2="416" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2A231E" />
+      <stop offset="1" stop-color="#111111" />
+    </linearGradient>
+    <linearGradient id="bg-light" x1="96" y1="64" x2="416" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7EF" />
+      <stop offset="1" stop-color="#F4E8DC" />
+    </linearGradient>
+    <linearGradient id="ring-dark" x1="120" y1="96" x2="392" y2="416" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2A65A" />
+      <stop offset="1" stop-color="#D8642A" />
+    </linearGradient>
+    <linearGradient id="ring-light" x1="120" y1="96" x2="392" y2="416" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D56B31" />
+      <stop offset="1" stop-color="#A7461F" />
+    </linearGradient>
+    <filter id="shadow" x="64" y="56" width="384" height="400" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <rect class="bg-dark" x="56" y="56" width="400" height="400" rx="112" fill="url(#bg-dark)" />
+  <rect class="bg-light" x="56" y="56" width="400" height="400" rx="112" fill="url(#bg-light)" />
+  <rect class="ring-dark" x="70" y="70" width="372" height="372" rx="98" stroke="url(#ring-dark)" stroke-width="12" opacity="0.9" filter="url(#shadow)" />
+  <rect class="ring-light" x="70" y="70" width="372" height="372" rx="98" stroke="url(#ring-light)" stroke-width="12" opacity="0.95" filter="url(#shadow)" />
+
+  <circle class="spark-dark" cx="160" cy="162" r="10" fill="#F2A65A" opacity="0.95" />
+  <circle class="spark-light" cx="160" cy="162" r="10" fill="#D56B31" opacity="0.9" />
+  <circle class="spark-dark" cx="352" cy="350" r="7" fill="#F2A65A" opacity="0.45" />
+  <circle class="spark-light" cx="352" cy="350" r="7" fill="#A7461F" opacity="0.35" />
+
+  <g class="accent-dark" filter="url(#shadow)">
+    <path d="M163 353V159C163 146.297 173.297 136 186 136H274C324.258 136 365 176.742 365 227C365 277.258 324.258 318 274 318H227V353C227 365.703 216.703 376 204 376C191.297 376 181 365.703 181 353V342H186C198.703 342 209 331.703 209 319V201C209 188.297 198.703 178 186 178C173.297 178 163 188.297 163 201V353Z" fill="#F6F1EA" />
+    <path d="M296 318H258C245.297 318 235 307.703 235 295C235 282.297 245.297 272 258 272H296C309.255 272 320 261.255 320 248C320 234.745 309.255 224 296 224H258C245.297 224 235 213.703 235 201C235 188.297 245.297 178 258 178H296C334.66 178 366 209.34 366 248C366 286.66 334.66 318 296 318Z" fill="#F2A65A" />
+  </g>
+
+  <g class="accent-light" filter="url(#shadow)">
+    <path d="M163 353V159C163 146.297 173.297 136 186 136H274C324.258 136 365 176.742 365 227C365 277.258 324.258 318 274 318H227V353C227 365.703 216.703 376 204 376C191.297 376 181 365.703 181 353V342H186C198.703 342 209 331.703 209 319V201C209 188.297 198.703 178 186 178C173.297 178 163 188.297 163 201V353Z" fill="#171717" />
+    <path d="M296 318H258C245.297 318 235 307.703 235 295C235 282.297 245.297 272 258 272H296C309.255 272 320 261.255 320 248C320 234.745 309.255 224 296 224H258C245.297 224 235 213.703 235 201C235 188.297 245.297 178 258 178H296C334.66 178 366 209.34 366 248C366 286.66 334.66 318 296 318Z" fill="#D56B31" />
+  </g>
+
+  <text class="monogram-dark" x="256" y="284" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="124" font-weight="800" letter-spacing="18" fill="#F6F1EA">S P</text>
+  <text class="monogram-light" x="256" y="284" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="124" font-weight="800" letter-spacing="18" fill="#171717">S P</text>
+</svg>
