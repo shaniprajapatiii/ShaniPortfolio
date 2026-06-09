@@ -44,7 +44,8 @@ export function ContactPage() {
          });
 
          if (!response.ok) {
-            throw new Error("Unable to send message");
+            const body = await response.json().catch(() => null);
+            throw new Error(body?.error || "Unable to send message");
          }
 
          setStatus("sent");
@@ -53,7 +54,9 @@ export function ContactPage() {
       } catch (error) {
          setStatus("error");
          setFeedback(
-            "Something went wrong while sending your message. Please try again later."
+            error instanceof Error
+               ? error.message
+               : "Something went wrong while sending your message. Please try again later."
          );
       }
    };
