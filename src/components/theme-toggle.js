@@ -33,7 +33,11 @@ export function ThemeToggle() {
          aria-label="Toggle theme"
          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-surface text-foreground transition-colors hover:border-ember/60 hover:text-ember"
       >
-         {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+         {theme === "dark" ? (
+            <Sun className="h-4 w-4" />
+         ) : (
+            <Moon className="h-4 w-4" />
+         )}
       </button>
    );
 }

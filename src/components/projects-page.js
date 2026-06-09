@@ -7,12 +7,18 @@ import { GithubIcon } from "@/components/brand-icons";
 
 export function ProjectsPage() {
    const categories = useMemo(
-      () => ["All", ...Array.from(new Set(PROJECTS.map((project) => project.category)))],
+      () => [
+         "All",
+         ...Array.from(new Set(PROJECTS.map((project) => project.category))),
+      ],
       [],
    );
    const [active, setActive] = useState("All");
 
-   const filtered = active === "All" ? PROJECTS : PROJECTS.filter((project) => project.category === active);
+   const filtered =
+      active === "All"
+         ? PROJECTS
+         : PROJECTS.filter((project) => project.category === active);
 
    return (
       <>
@@ -34,7 +40,10 @@ export function ProjectsPage() {
 
             <div className="grid grid-cols-1 gap-4 pb-24 md:grid-cols-2 lg:grid-cols-3">
                {filtered.map((project) => (
-                  <article key={project.slug} className="bento-card group flex flex-col p-6">
+                  <article
+                     key={project.slug}
+                     className="bento-card group flex flex-col p-6"
+                  >
                      <div className="flex items-center justify-between">
                         <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
                            {project.category}
@@ -47,10 +56,15 @@ export function ProjectsPage() {
                      <h3 className="mt-4 text-2xl font-semibold tracking-tight transition-colors group-hover:text-ember">
                         {project.name}
                      </h3>
-                     <p className="mt-2 flex-1 text-sm text-muted-foreground">{project.description}</p>
+                     <p className="mt-2 flex-1 text-sm text-muted-foreground">
+                        {project.description}
+                     </p>
                      <div className="mt-5 flex flex-wrap gap-1.5">
                         {project.stack.map((stackItem) => (
-                           <span key={stackItem} className="rounded border border-border bg-background px-1.5 py-0.5 font-mono text-[10px]">
+                           <span
+                              key={stackItem}
+                              className="rounded border border-border bg-background px-1.5 py-0.5 font-mono text-[10px]"
+                           >
                               {stackItem}
                            </span>
                         ))}
@@ -63,7 +77,9 @@ export function ProjectsPage() {
                            <GithubIcon className="h-3.5 w-3.5" /> Code
                         </a>
                         <a
-                              href={project.href} target="_blank" rel="noopener noreferrer"
+                           href={project.href}
+                           target="_blank"
+                           rel="noopener noreferrer"
                            className="ml-auto inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-muted-foreground hover:text-ember"
                         >
                            Details <ArrowUpRight className="h-3.5 w-3.5" />

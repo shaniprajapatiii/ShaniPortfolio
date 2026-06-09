@@ -23,11 +23,18 @@ export default function ExperiencePage() {
          <div className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
             <div className="grid gap-3 lg:grid-cols-2">
                {EXPERIENCE.map((item) => (
-                  <article key={`${item.role}-${item.org}`} className="bento-card p-6 lg:p-8">
+                  <article
+                     key={`${item.role}-${item.org}`}
+                     className="bento-card p-6 lg:p-8"
+                  >
                      <div className="flex items-start justify-between">
                         <div>
-                           <h2 className="text-2xl font-semibold tracking-tight">{item.role}</h2>
-                           <div className="mt-1 font-mono text-sm text-ember">{item.org}</div>
+                           <h2 className="text-2xl font-semibold tracking-tight">
+                              {item.role}
+                           </h2>
+                           <div className="mt-1 font-mono text-sm text-ember">
+                              {item.org}
+                           </div>
                         </div>
                         <div className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
                            {item.period}
@@ -36,7 +43,10 @@ export default function ExperiencePage() {
                      <p className="mt-4 text-muted-foreground">{item.summary}</p>
                      <div className="mt-5 flex flex-wrap gap-1.5">
                         {item.tags.map((tag) => (
-                           <span key={tag} className="rounded border border-border bg-background px-1.5 py-0.5 font-mono text-[11px]">
+                           <span
+                              key={tag}
+                              className="rounded border border-border bg-background px-1.5 py-0.5 font-mono text-[11px]"
+                           >
                               {tag}
                            </span>
                         ))}

@@ -6,11 +6,17 @@ import { ARTICLES } from "@/lib/site-data";
 
 export function ArticlesPage() {
    const categories = useMemo(
-      () => ["All", ...Array.from(new Set(ARTICLES.map((article) => article.category)))],
+      () => [
+         "All",
+         ...Array.from(new Set(ARTICLES.map((article) => article.category))),
+      ],
       [],
    );
    const [active, setActive] = useState("All");
-   const list = active === "All" ? ARTICLES : ARTICLES.filter((article) => article.category === active);
+   const list =
+      active === "All"
+         ? ARTICLES
+         : ARTICLES.filter((article) => article.category === active);
 
    return (
       <>
@@ -48,7 +54,9 @@ export function ArticlesPage() {
                         <h2 className="mt-2 text-2xl font-semibold leading-snug tracking-tight transition-colors group-hover:text-ember">
                            {article.title}
                         </h2>
-                        <p className="mt-1 max-w-2xl text-muted-foreground">{article.description}</p>
+                        <p className="mt-1 max-w-2xl text-muted-foreground">
+                           {article.description}
+                        </p>
                      </div>
                      <ArrowUpRight className="h-5 w-5 shrink-0 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ember" />
                   </a>

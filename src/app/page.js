@@ -3,9 +3,19 @@ import { ArrowUpRight, BookOpen, Code2, Terminal, Trophy, Zap, Cpu } from "lucid
 import { PageShell } from "@/components/page-shell";
 import { GithubIcon } from "@/components/brand-icons";
 import { FOCUS, METRICS, PROJECTS, SITE } from "@/lib/site-data";
+import { getLiveCodingStats } from "@/lib/coding-data";
 
-export default function HomePage() {
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
   const featured = PROJECTS.filter((project) => project.featured);
+  const codingStats = await getLiveCodingStats();
+  const problemsSolved = codingStats.problemsSolved ? `${codingStats.problemsSolved}+` : "550+";
+  const contestCount = codingStats.contestCount ? `${codingStats.contestCount}+` : "100+";
+  const codeforcesRating = codingStats.codeforces?.maxRating ?? "1742";
+  const githubContributions = codingStats.github?.totalContributions
+    ? codingStats.github.totalContributions.toLocaleString()
+    : "1.2k";
 
   return (
     <PageShell>
@@ -170,8 +180,8 @@ export default function HomePage() {
                   Coding
                 </span>
               </div>
-              <div className="mt-4 font-mono text-3xl font-semibold text-ember">550+</div>
-              <div className="text-sm text-muted-foreground">problems · 100+ contests</div>
+              <div className="mt-4 font-mono text-3xl font-semibold text-ember">{problemsSolved}</div>
+              <div className="text-sm text-muted-foreground">problems · {contestCount} contests · CF {codeforcesRating}</div>
             </div>
             <div className="font-mono text-xs uppercase tracking-wider text-muted-foreground group-hover:text-ember">
               View dashboard →
@@ -203,7 +213,7 @@ export default function HomePage() {
                   Open Source
                 </span>
               </div>
-              <div className="mt-4 font-mono text-3xl font-semibold">1.2k</div>
+              <div className="mt-4 font-mono text-3xl font-semibold">{githubContributions}</div>
               <div className="text-sm text-muted-foreground">contributions this year</div>
             </div>
             <div className="font-mono text-xs uppercase tracking-wider text-muted-foreground group-hover:text-ember">

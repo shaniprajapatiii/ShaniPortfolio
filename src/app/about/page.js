@@ -26,25 +26,34 @@ export default function AboutPage() {
                <div>
                   <h2 className="mb-3 text-2xl font-semibold">Background</h2>
                   <p className="text-muted-foreground">
-                     I'm a 3rd-year student of GL Bajaj Institute of Technology and Management, studying
-                     Computer Science & Information Technology. I started writing code in 2022 and quickly fell
-                     into competitive programming — the way it forces clear thinking still shapes how I
+                     I'm a 3rd-year student of GL Bajaj Institute of Technology and
+                     Management, studying Computer Science & Information Technology. I
+                     started writing code in 2022 and quickly fell into competitive
+                     programming — the way it forces clear thinking still shapes how I
                      build today.
                   </p>
                </div>
                <div>
                   <h2 className="mb-3 text-2xl font-semibold">What I care about</h2>
                   <p className="text-muted-foreground">
-                     As an computer science student, I care deeply about the craft of software engineering — writing clean, efficient code, designing scalable systems and building products that solve real problems. I'm
-                     passionate about learning new technologies and continuously improving my skills. I also
-                     care about the impact of technology on society and strive to build products that have a
-                     positive impact on people's lives.
+                     As an computer science student, I care deeply about the craft of
+                     software engineering — writing clean, efficient code, designing
+                     scalable systems and building products that solve real problems.
+                     I'm passionate about learning new technologies and continuously
+                     improving my skills. I also care about the impact of technology on
+                     society and strive to build products that have a positive impact
+                     on people's lives.
                   </p>
                </div>
                <div>
                   <h2 className="mb-3 text-2xl font-semibold">What I'm aiming for</h2>
                   <p className="text-muted-foreground">
-                     Short-term, I'm focused on building my skills and gaining experience through internships and personal projects. Long-term, I aspire to work at a company that values innovation and impact, where I can contribute to building products that make a difference in people's lives. Ultimately, I want to be part of the next wave of technology that shapes the future.
+                     Short-term, I'm focused on building my skills and gaining
+                     experience through internships and personal projects. Long-term, I
+                     aspire to work at a company that values innovation and impact,
+                     where I can contribute to building products that make a difference
+                     in people's lives. Ultimately, I want to be part of the next wave
+                     of technology that shapes the future.
                   </p>
                </div>
             </article>
@@ -55,12 +64,15 @@ export default function AboutPage() {
                   <div className="mt-3 font-mono text-xs uppercase tracking-wider text-muted-foreground">
                      Education
                   </div>
-                  <div className="mt-2 text-lg font-semibold">GL Bajaj Institute of Technology and Management</div>
+                  <div className="mt-2 text-lg font-semibold">
+                     GL Bajaj Institute of Technology and Management
+                  </div>
                   <div className="text-sm text-muted-foreground">
                      B.Tech · Computer Science & Information Technology
                   </div>
                   <div className="text-sm text-muted-foreground">
-                     Location: Greater Noida, Uttar Pradesh<br />
+                     Location: Greater Noida, Uttar Pradesh
+                     <br />
                      Duration: 2024 - 2028
                   </div>
                </div>
@@ -79,7 +91,10 @@ export default function AboutPage() {
                         "Theory of Computation",
                         "Machine Learning",
                      ].map((course) => (
-                        <span key={course} className="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px]">
+                        <span
+                           key={course}
+                           className="rounded border border-border bg-background px-2 py-0.5 font-mono text-[11px]"
+                        >
                            {course}
                         </span>
                      ))}
@@ -90,16 +105,24 @@ export default function AboutPage() {
 
          <section className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
             <div className="mb-8">
-               <div className="font-mono text-xs uppercase tracking-[0.2em] text-ember">/ journey</div>
-               <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">How I got here.</h2>
+               <div className="font-mono text-xs uppercase tracking-[0.2em] text-ember">
+                  / journey
+               </div>
+               <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+                  How I got here.
+               </h2>
             </div>
             <ol className="relative border-l border-border pl-8">
                {TIMELINE.map((item) => (
                   <li key={item.year} className="mb-10 last:mb-0">
                      <span className="absolute -left-[7px] mt-1.5 inline-block h-3 w-3 rounded-full border-2 border-ember bg-background" />
-                     <div className="font-mono text-xs uppercase tracking-wider text-ember">{item.year}</div>
+                     <div className="font-mono text-xs uppercase tracking-wider text-ember">
+                        {item.year}
+                     </div>
                      <div className="mt-1 text-xl font-semibold">{item.title}</div>
-                     <p className="mt-1 max-w-2xl text-muted-foreground">{item.body}</p>
+                     <p className="mt-1 max-w-2xl text-muted-foreground">
+                        {item.body}
+                     </p>
                   </li>
                ))}
             </ol>
