@@ -26,9 +26,7 @@ export const NAV = [
 
 export const METRICS = [
    { value: "15+", label: "Projects Built" },
-   { value: "500+", label: "Problems Solved" },
-   { value: "40+", label: "Contests" },
-   { value: "20+", label: "Technologies" },
+   { value: "25+", label: "Technologies" },
 ];
 
 export const PROJECTS = [
@@ -170,133 +168,6 @@ export const TIMELINE = [
    },
 ];
 
-export const CODING_PROFILES = [
-   {
-      platform: "LeetCode",
-      handle: "shaniprajapatiii",
-      primary: "300+ solved",
-      secondary: "Contest rating 1576",
-      url: "https://leetcode.com/shaniprajapatiii",
-      badges: ["100 Days"],
-   },
-   {
-      platform: "Codeforces",
-      handle: "shaniprajapati",
-      primary: "Rating 1246",
-      secondary: "Max 1246 · 100+ solved",
-      url: "https://codeforces.com/profile/shaniprajapati",
-      badges: ["Pupil"],
-   },
-   {
-      platform: "CodeChef",
-      handle: "shani_6307",
-      primary: "Rating 1600+",
-      secondary: "Competitive practice",
-      url: "https://www.codechef.com/users/shani_6307",
-      badges: ["SnackDown"],
-   },
-   {
-      platform: "GitHub",
-      handle: "shaniprajapatiii",
-      primary: "400+ contributions",
-      secondary: "40+ repositories",
-      url: "https://github.com/shaniprajapatiii",
-      badges: ["Arctic Vault"],
-   },
-];
-
-export const TOPICS = [
-   { name: "Arrays", solved: 92, level: "Strong" },
-   { name: "Strings", solved: 64, level: "Strong" },
-   { name: "Trees", solved: 58, level: "Strong" },
-   { name: "Graphs", solved: 71, level: "Strong" },
-   { name: "Dynamic Programming", solved: 88, level: "Strong" },
-   { name: "Greedy", solved: 41, level: "Comfortable" },
-   { name: "Binary Search", solved: 36, level: "Comfortable" },
-   { name: "Backtracking", solved: 22, level: "Comfortable" },
-   { name: "Segment Trees", solved: 18, level: "Learning" },
-];
-
-export const CONTESTS = [
-   {
-      name: "Weekly Contest 412",
-      platform: "LeetCode",
-      rank: 1834,
-      delta: "+38",
-      date: "2025-11-09",
-   },
-   {
-      name: "Round 985 Div 3",
-      platform: "Codeforces",
-      rank: 2210,
-      delta: "+62",
-      date: "2025-10-26",
-   },
-   {
-      name: "Biweekly 142",
-      platform: "LeetCode",
-      rank: 2105,
-      delta: "+24",
-      date: "2025-10-19",
-   },
-   {
-      name: "Round 981 Div 2",
-      platform: "Codeforces",
-      rank: 4120,
-      delta: "-31",
-      date: "2025-10-05",
-   },
-   {
-      name: "Weekly Contest 408",
-      platform: "LeetCode",
-      rank: 1502,
-      delta: "+48",
-      date: "2025-09-28",
-   },
-];
-
-export const EXPERIENCE = [
-   {
-      role: "Open Source Contributor",
-      org: "Various",
-      period: "2024 — Present",
-      summary:
-         "Shipping fixes and features to TypeScript tooling and React component libraries.",
-      tags: [
-         "JavaScript",
-         "TypeScript",
-         "React",
-         "Next.js",
-         "Express.js",
-         "Node.js",
-         "Tooling",
-      ],
-   },
-   {
-      role: "Hackathon Lead",
-      org: "Smart India Hackathon & campus events",
-      period: "2024 — 2025",
-      summary:
-         "Led 4-person teams across three hackathons; built MVPs end-to-end in under 36 hours.",
-      tags: ["Leadership", "Full-stack", "Product"],
-   },
-   {
-      role: "DSA Mentor",
-      org: "GLBITM CDC Department",
-      period: "2024 — Present",
-      summary:
-         "Mentor juniors on structured DSA practice and interview preparation.",
-      tags: ["Mentorship", "DSA"],
-   },
-   {
-      role: "Undergraduate Researcher",
-      org: "GLBITM Information Technology Department",
-      period: "2 months in 2025",
-      summary: "Exploring graph-based representations for citation analysis.",
-      tags: ["Research", "Graphs", "ML"],
-   },
-];
-
 export const ARTICLES = [
    {
       slug: "thinking-in-segments",
@@ -350,5 +221,47 @@ export const ARTICLES = [
       category: "System Design",
       readTime: "12 min",
       date: "2025-03-11",
+   },
+];
+
+export const EXPERIENCE = [
+   {
+      role: "Open Source Contributor",
+      org: "Various",
+      period: "2024 — Present",
+      summary:
+         "Shipping fixes and features to TypeScript tooling and React component libraries.",
+      tags: [
+         "JavaScript",
+         "TypeScript",
+         "React",
+         "Next.js",
+         "Express.js",
+         "Node.js",
+         "Tooling",
+      ],
+   },
+   {
+      role: "Hackathon Lead",
+      org: "Smart India Hackathon & campus events",
+      period: "2024 — 2025",
+      summary:
+         "Led 4-person teams across three hackathons; built MVPs end-to-end in under 36 hours.",
+      tags: ["Leadership", "Full-stack", "Product"],
+   },
+   {
+      role: "DSA Mentor",
+      org: "GLBITM CDC Department",
+      period: "2024 — Present",
+      summary:
+         "Mentor juniors on structured DSA practice and interview preparation.",
+      tags: ["Mentorship", "DSA"],
+   },
+   {
+      role: "Undergraduate Researcher",
+      org: "GLBITM Information Technology Department",
+      period: "2 months in 2025",
+      summary: "Exploring graph-based representations for citation analysis.",
+      tags: ["Research", "Graphs", "ML"],
    },
 ];

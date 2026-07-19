@@ -4,7 +4,8 @@ const CODEFORCES_HANDLE = process.env.CODEFORCES_HANDLE || "shaniprajapati";
 const CODECHEF_HANDLE = process.env.CODECHEF_HANDLE || "shani_6307";
 
 const fetchJson = async (url, options = {}) => {
-  const response = await fetch(url, options);
+  // Force no-store on every request so Next never serves a cached response.
+  const response = await fetch(url, { ...options, cache: "no-store" });
   if (!response.ok) {
     throw new Error(`Fetch failed: ${response.status} ${response.statusText}`);
   }
@@ -59,6 +60,86 @@ const mergeDailyCounts = (...arrays) => {
     .sort((a, b) => a.date.localeCompare(b.date));
 };
 
+// --- Cross-platform topic merging -----------------------------------------
+// LeetCode tag names ("Dynamic Programming") and Codeforces tag names ("dp")
+// don't match as strings, so common ones are aliased to one canonical label.
+// Anything not in this map is kept as-is (title-cased) rather than dropped.
+const TOPIC_ALIASES = {
+  dp: "Dynamic Programming",
+  "dynamic programming": "Dynamic Programming",
+  graphs: "Graphs",
+  graph: "Graphs",
+  "dfs and similar": "Graphs",
+  trees: "Trees",
+  tree: "Trees",
+  strings: "Strings",
+  string: "Strings",
+  greedy: "Greedy",
+  "binary search": "Binary Search",
+  "two pointers": "Two Pointers",
+  arrays: "Arrays",
+  array: "Arrays",
+  backtracking: "Backtracking",
+  bitmasks: "Bit Manipulation",
+  "bit manipulation": "Bit Manipulation",
+  math: "Math",
+  sortings: "Sorting",
+  sorting: "Sorting",
+  hashing: "Hash Table",
+  "hash table": "Hash Table",
+  "data structures": "Data Structures",
+  "constructive algorithms": "Constructive Algorithms",
+  implementation: "Implementation",
+  "number theory": "Number Theory",
+  combinatorics: "Combinatorics",
+  geometry: "Geometry",
+  "shortest paths": "Graphs",
+  "dsu": "Union Find",
+  "union find": "Union Find",
+};
+
+const canonicalTopic = (name) => {
+  const key = name.trim().toLowerCase();
+  if (TOPIC_ALIASES[key]) return TOPIC_ALIASES[key];
+  return name
+    .trim()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+
+const mergeTopics = (leetcodeTopics = [], codeforcesTopics = []) => {
+  const merged = new Map();
+  const add = (name, solved) => {
+    const key = canonicalTopic(name);
+    merged.set(key, (merged.get(key) ?? 0) + solved);
+  };
+
+  leetcodeTopics.forEach((topic) => add(topic.name, topic.solved));
+  codeforcesTopics.forEach((topic) => add(topic.name, topic.solved));
+
+  const sorted = Array.from(merged.entries())
+    .map(([name, solved]) => ({ name, solved }))
+    .sort((a, b) => b.solved - a.solved)
+    .slice(0, 10);
+
+  const n = sorted.length;
+  return sorted.map((item, index) => {
+    const percentile = n <= 1 ? 0 : index / (n - 1);
+    const level =
+      percentile < 0.34 ? "Strong" : percentile < 0.67 ? "Comfortable" : "Learning";
+    return { ...item, level };
+  });
+};
+
+const mergeContests = (...lists) =>
+  lists
+    .flat()
+    .filter(Boolean)
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 6);
+
+// --- GitHub ------------------------------------------------------------
 export async function fetchGithubStats() {
   const [profileData, contributionsHtml] = await Promise.all([
     fetchJson(`https://api.github.com/users/${GITHUB_USERNAME}`, {
@@ -103,11 +184,57 @@ export async function fetchGithubStats() {
   };
 }
 
+// --- LeetCode ------------------------------------------------------------
 export async function fetchLeetCodeStats() {
-  const query = `query getUserContributions($username: String!) { matchedUser(username: $username) { username contributionsCalendar { totalActiveDays totalContributions weeks { contributionDays { date contributionCount color } } } submitStats { acSubmissionNum { difficulty count submissions count } } profile { ranking } } }`;
+  const query = `
+    query getUserProfile($username: String!) {
+      matchedUser(username: $username) {
+        username
+        submitStatsGlobal {
+          acSubmissionNum {
+            difficulty
+            count
+          }
+        }
+        tagProblemCounts {
+          advanced { tagName tagSlug problemsSolved }
+          intermediate { tagName tagSlug problemsSolved }
+          fundamental { tagName tagSlug problemsSolved }
+        }
+        userCalendar {
+          streak
+          totalActiveDays
+          submissionCalendar
+        }
+        profile {
+          ranking
+        }
+      }
+      userContestRanking(username: $username) {
+        rating
+        globalRanking
+        attendedContestsCount
+      }
+      userContestRankingHistory(username: $username) {
+        attended
+        rating
+        ranking
+        contest {
+          title
+          startTime
+        }
+      }
+      recentAcSubmissionList(username: $username, limit: 15) {
+        title
+        titleSlug
+        timestamp
+      }
+    }
+  `;
 
   const response = await fetch("https://leetcode.com/graphql", {
     method: "POST",
+    cache: "no-store",
     headers: {
       "Content-Type": "application/json",
       "User-Agent": "Mozilla/5.0",
@@ -115,7 +242,6 @@ export async function fetchLeetCodeStats() {
       "X-Requested-With": "XMLHttpRequest",
     },
     body: JSON.stringify({ query, variables: { username: LEETCODE_USERNAME } }),
-    cache: "no-store",
   });
 
   if (!response.ok) {
@@ -123,64 +249,128 @@ export async function fetchLeetCodeStats() {
   }
 
   const json = await response.json();
+  if (json?.errors?.length) {
+    throw new Error(json.errors[0]?.message || "LeetCode GraphQL error");
+  }
+
   const matchedUser = json?.data?.matchedUser;
-  const calendar = matchedUser?.contributionsCalendar?.weeks?.flatMap((week) =>
-    week.contributionDays.map((day) => ({
-      date: day.date,
-      count: Number(day.contributionCount || 0),
-    })),
-  );
-  const allSubmissions = matchedUser?.submitStats?.acSubmissionNum ?? [];
+  if (!matchedUser) {
+    throw new Error("LeetCode user not found");
+  }
+
+  const submissionCalendarRaw = matchedUser?.userCalendar?.submissionCalendar;
+  const calendar = submissionCalendarRaw
+    ? Object.entries(JSON.parse(submissionCalendarRaw)).map(
+      ([timestamp, count]) => ({
+        date: new Date(Number(timestamp) * 1000).toISOString().slice(0, 10),
+        count: Number(count),
+      }),
+    )
+    : [];
+
+  const allSubmissions = matchedUser?.submitStatsGlobal?.acSubmissionNum ?? [];
   const solvedEntry = allSubmissions.find(
     (entry) => entry.difficulty === "All",
   );
+
+  const tagGroups = matchedUser?.tagProblemCounts ?? {};
+  const topics = [
+    ...(tagGroups.fundamental ?? []),
+    ...(tagGroups.intermediate ?? []),
+    ...(tagGroups.advanced ?? []),
+  ]
+    .filter((tag) => tag.problemsSolved > 0)
+    .map((tag) => ({ name: tag.tagName, solved: tag.problemsSolved }));
+
+  const recentSolved = (json?.data?.recentAcSubmissionList ?? []).map(
+    (item) => ({
+      title: item.title,
+      url: `https://leetcode.com/problems/${item.titleSlug}/`,
+      platform: "LeetCode",
+      date: new Date(Number(item.timestamp) * 1000).toISOString().slice(0, 10),
+    }),
+  );
+
+  const contestHistory = (json?.data?.userContestRankingHistory ?? [])
+    .filter((entry) => entry.attended)
+    .sort((a, b) => a.contest.startTime - b.contest.startTime);
+
+  const contestsFull = contestHistory.map((entry, index) => ({
+    name: entry.contest.title,
+    rank: entry.ranking,
+    delta:
+      index === 0
+        ? 0
+        : Math.round(entry.rating - contestHistory[index - 1].rating),
+    date: new Date(entry.contest.startTime * 1000).toISOString().slice(0, 10),
+    platform: "LeetCode",
+  }));
 
   return {
     handle: LEETCODE_USERNAME,
     url: `https://leetcode.com/${LEETCODE_USERNAME}`,
     solvedCount: solvedEntry?.count ?? null,
-    totalContributions:
-      matchedUser?.contributionsCalendar?.totalContributions ?? null,
-    streak: buildStreak(calendar),
-    contributions: calendar ?? [],
+    totalContributions: matchedUser?.userCalendar?.totalActiveDays ?? null,
+    streak: matchedUser?.userCalendar?.streak ?? buildStreak(calendar),
+    contributions: calendar,
     rating: matchedUser?.profile?.ranking ?? null,
+    contestRating: json?.data?.userContestRanking?.rating
+      ? Math.round(json.data.userContestRanking.rating)
+      : null,
+    contestGlobalRanking: json?.data?.userContestRanking?.globalRanking ?? null,
+    attendedContestsCount:
+      json?.data?.userContestRanking?.attendedContestsCount ?? null,
+    topics,
+    recentSolved,
+    contests: contestsFull.slice(-6).reverse(),
   };
 }
 
+// --- Codeforces ------------------------------------------------------------
 export async function fetchCodeforcesStats() {
   const [infoData, ratingData, statusData] = await Promise.all([
     fetchJson(
       `https://codeforces.com/api/user.info?handles=${CODEFORCES_HANDLE}`,
-      {
-        headers: { accept: "application/json" },
-      },
+      { headers: { accept: "application/json" } },
     ),
     fetchJson(
       `https://codeforces.com/api/user.rating?handle=${CODEFORCES_HANDLE}`,
-      {
-        headers: { accept: "application/json" },
-      },
+      { headers: { accept: "application/json" } },
     ),
     fetchJson(
-      `https://codeforces.com/api/user.status?handle=${CODEFORCES_HANDLE}&from=1&count=1000`,
-      {
-        headers: { accept: "application/json" },
-      },
+      `https://codeforces.com/api/user.status?handle=${CODEFORCES_HANDLE}&from=1&count=10000`,
+      { headers: { accept: "application/json" } },
     ).catch(() => ({ status: "FAILED", result: [] })),
   ]);
 
   const user = infoData?.result?.[0];
   const ratingHistory = ratingData?.result ?? [];
-  const solvedProblems = new Set();
-  (statusData?.result ?? []).forEach((submission) => {
+  const submissions = statusData?.result ?? [];
+
+  // Dedupe to unique solved problems (a problem can be OK'd multiple times).
+  const solvedProblems = new Map();
+  submissions.forEach((submission) => {
     if (submission.verdict === "OK") {
-      solvedProblems.add(
-        `${submission.problem.contestId}-${submission.problem.index}`,
-      );
+      const key = `${submission.problem.contestId}-${submission.problem.index}`;
+      if (!solvedProblems.has(key)) {
+        solvedProblems.set(key, submission.problem);
+      }
     }
   });
 
-  const submissionsByDate = (statusData?.result ?? []).reduce((map, submission) => {
+  // Real topic tags come straight off each solved problem.
+  const tagCounts = new Map();
+  solvedProblems.forEach((problem) => {
+    (problem.tags ?? []).forEach((tag) => {
+      tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+    });
+  });
+  const topics = Array.from(tagCounts.entries())
+    .map(([name, solved]) => ({ name, solved }))
+    .sort((a, b) => b.solved - a.solved)
+    .slice(0, 15);
+
+  const submissionsByDate = submissions.reduce((map, submission) => {
     const date = new Date(submission.creationTimeSeconds * 1000)
       .toISOString()
       .slice(0, 10);
@@ -189,13 +379,34 @@ export async function fetchCodeforcesStats() {
   }, {});
 
   const contests = ratingHistory
-    .slice(-5)
+    .slice(-6)
     .reverse()
     .map((item) => ({
       name: item.contestName,
       rank: item.rank,
       delta: item.newRating - item.oldRating,
       date: new Date(item.contestStartTimeSeconds * 1000)
+        .toISOString()
+        .slice(0, 10),
+      platform: "Codeforces",
+    }));
+
+  const seenRecent = new Set();
+  const recentSolved = submissions
+    .filter((submission) => submission.verdict === "OK")
+    .sort((a, b) => b.creationTimeSeconds - a.creationTimeSeconds)
+    .filter((submission) => {
+      const key = `${submission.problem.contestId}-${submission.problem.index}`;
+      if (seenRecent.has(key)) return false;
+      seenRecent.add(key);
+      return true;
+    })
+    .slice(0, 10)
+    .map((submission) => ({
+      title: `${submission.problem.index}. ${submission.problem.name}`,
+      url: `https://codeforces.com/problemset/problem/${submission.problem.contestId}/${submission.problem.index}`,
+      platform: "Codeforces",
+      date: new Date(submission.creationTimeSeconds * 1000)
         .toISOString()
         .slice(0, 10),
     }));
@@ -207,11 +418,18 @@ export async function fetchCodeforcesStats() {
     maxRating: user?.maxRating ?? null,
     contestCount: ratingHistory.length,
     solvedCount: solvedProblems.size || null,
+    topics,
     contests,
     submissionsByDate,
+    recentSolved,
   };
 }
 
+// --- CodeChef ------------------------------------------------------------
+// CodeChef has no public API for tags, recent submissions, or contest
+// history — only the profile page HTML, which gives rating + solved count.
+// Those two are still real and live; topics/contests intentionally don't
+// include CodeChef because there's no honest way to fetch them.
 export async function fetchCodeChefStats() {
   const response = await fetch(
     `https://www.codechef.com/users/${CODECHEF_HANDLE}`,
@@ -243,12 +461,25 @@ export async function fetchCodeChefStats() {
   };
 }
 
+// --- Aggregate ------------------------------------------------------------
 export async function getLiveCodingStats() {
   const [github, leetcode, codeforces, codechef] = await Promise.all([
-    fetchGithubStats().catch(() => null),
-    fetchLeetCodeStats().catch(() => null),
-    fetchCodeforcesStats().catch(() => null),
-    fetchCodeChefStats().catch(() => null),
+    fetchGithubStats().catch((error) => {
+      console.error("GitHub stats failed:", error.message);
+      return null;
+    }),
+    fetchLeetCodeStats().catch((error) => {
+      console.error("LeetCode stats failed:", error.message);
+      return null;
+    }),
+    fetchCodeforcesStats().catch((error) => {
+      console.error("Codeforces stats failed:", error.message);
+      return null;
+    }),
+    fetchCodeChefStats().catch((error) => {
+      console.error("CodeChef stats failed:", error.message);
+      return null;
+    }),
   ]);
 
   const problemsSolved = [
@@ -259,13 +490,23 @@ export async function getLiveCodingStats() {
     .filter(Number.isFinite)
     .reduce((sum, value) => sum + value, 0);
 
-  const codeforcesHeatmap = Object.entries(codeforces?.submissionsByDate ?? {}).map(
-    ([date, count]) => ({ date, count }),
-  );
+  const codeforcesHeatmap = Object.entries(
+    codeforces?.submissionsByDate ?? {},
+  ).map(([date, count]) => ({ date, count }));
   const combinedCodingHeatmap = mergeDailyCounts(
     leetcode?.contributions ?? [],
     codeforcesHeatmap,
   );
+
+  const recentSolved = [
+    ...(leetcode?.recentSolved ?? []),
+    ...(codeforces?.recentSolved ?? []),
+  ]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 8);
+
+  const totalContestCount =
+    (codeforces?.contestCount ?? 0) + (leetcode?.attendedContestsCount ?? 0);
 
   return {
     github,
@@ -273,9 +514,12 @@ export async function getLiveCodingStats() {
     codeforces,
     codechef,
     problemsSolved: problemsSolved || null,
-    contestCount: codeforces?.contestCount ?? null,
+    contestCount: totalContestCount || null,
     currentStreak: leetcode?.streak ?? null,
     combinedCodingHeatmap,
     githubHeatmap: github?.contributions ?? [],
+    topics: mergeTopics(leetcode?.topics, codeforces?.topics),
+    contests: mergeContests(codeforces?.contests, leetcode?.contests),
+    recentSolved,
   };
 }

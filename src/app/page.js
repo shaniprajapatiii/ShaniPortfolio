@@ -6,16 +6,25 @@ import { FOCUS, METRICS, PROJECTS, SITE } from "@/lib/site-data";
 import { getLiveCodingStats } from "@/lib/coding-data";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function HomePage() {
   const featured = PROJECTS.filter((project) => project.featured);
   const codingStats = await getLiveCodingStats();
-  const problemsSolved = codingStats.problemsSolved ? `${codingStats.problemsSolved}+` : "550+";
-  const contestCount = codingStats.contestCount ? `${codingStats.contestCount}+` : "100+";
-  const codeforcesRating = codingStats.codeforces?.maxRating ?? "1742";
+
+  const problemsSolved = codingStats.problemsSolved ? `${codingStats.problemsSolved}+` : "—";
+  const contestCount = codingStats.contestCount ? `${codingStats.contestCount}+` : "—";
+  const codeforcesRating = codingStats.codeforces?.maxRating ?? "—";
   const githubContributions = codingStats.github?.totalContributions
     ? codingStats.github.totalContributions.toLocaleString()
-    : "1.2k";
+    : "—";
+
+
+  const heroMetrics = [
+    ...METRICS,
+    { value: problemsSolved, label: "Problems Solved" },
+    { value: contestCount, label: "Contests" },
+  ];
 
   return (
     <PageShell>
@@ -105,7 +114,7 @@ export default async function HomePage() {
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-          {METRICS.map((metric, index) => (
+          {heroMetrics.map((metric, index) => (
             <div key={metric.label} className="bento-card group p-6">
               <div className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
                 {String(index + 1).padStart(2, "0")} · {metric.label}
@@ -252,4 +261,3 @@ export default async function HomePage() {
     </PageShell>
   );
 }
-
