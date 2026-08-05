@@ -403,19 +403,19 @@ export default async function CodingPage() {
             <Heatmap
                title="LeetCode heatmap"
                data={stats.leetcodeHeatmap}
-               accent="var(--ember)"
+               accent="oklch(0.70 0.16 30)"
                unitLabel="submission"
             />
             <Heatmap
                title="Codeforces heatmap"
                data={stats.codeforcesHeatmap}
-               accent="oklch(0.62 0.2 255)"
+               accent="var(--ember)"
                unitLabel="submission"
             />
             <Heatmap
                title="GitHub heatmap"
                data={stats.githubHeatmap}
-               accent="var(--accent)"
+               accent="oklch(0.70 0.16 180)"
                unitLabel="contribution"
             />
          </section>
