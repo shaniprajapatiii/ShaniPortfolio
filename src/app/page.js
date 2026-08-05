@@ -69,8 +69,8 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="lg:col-span-4">
-            <div className="ember-glow relative overflow-hidden rounded-[var(--radius-xl)] border border-border bg-surface p-6">
+          <div className="lg:col-span-4 lg:self-start">
+            <div className="relative overflow-hidden rounded-[var(--radius-xl)] border border-border bg-surface p-6">
               <div className="flex items-center justify-between">
                 <div className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
                   ~/now
@@ -81,30 +81,59 @@ export default async function HomePage() {
                   <span className="h-2 w-2 rounded-full bg-ember" />
                 </div>
               </div>
-              <div className="mt-4 space-y-2 font-mono text-sm leading-relaxed">
-                <div>
-                  <span className="text-ember">→</span> shipping <span className="text-foreground">The Clover</span>
-                </div>
-                <div>
-                  <span className="text-ember">→</span> studying <span className="text-foreground">system design</span>
-                </div>
-                <div>
-                  <span className="text-ember">→</span> grinding <span className="text-foreground">codeforces rounds</span>
-                </div>
-                <div>
-                  <span className="text-ember">→</span> writing <span className="text-foreground">notes & essays</span>
+              <div className="mt-5 space-y-3 font-mono text-sm leading-relaxed">
+                <div className="rounded-3xl border border-border bg-background p-4">
+                  <div className="font-semibold text-foreground">Current focus</div>
+                  <ul className="mt-2 space-y-2 text-muted-foreground">
+                    <li>• Shipping The Clover.</li>
+                    <li>• Practicing Codeforces.</li>
+                    <li>• Refining React apps.</li>
+                    <li>• Exploring ML tooling.</li>
+                    <li>• Writing product notes.</li>
+                  </ul>
                 </div>
               </div>
               <div className="mt-6 border-t border-border pt-4">
                 <div className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                  Stack today
+                  Quick links
                 </div>
-                <div className="mt-2 flex flex-wrap gap-1.5">
-                  {["TypeScript", "React", "Node", "Postgres", "Python", "Rust"].map((stackItem) => (
-                    <span key={stackItem} className="rounded border border-border bg-background px-1.5 py-0.5 font-mono text-[11px]">
-                      {stackItem}
-                    </span>
-                  ))}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <Link
+                    href="/toolkit"
+                    className="rounded-full border border-border bg-surface px-3 py-2 text-xs font-medium text-foreground transition hover:border-ember/60 hover:text-ember"
+                  >
+                    Toolkit
+                  </Link>
+                  <Link
+                    href="/projects"
+                    className="rounded-full border border-border bg-surface px-3 py-2 text-xs font-medium text-foreground transition hover:border-ember/60 hover:text-ember"
+                  >
+                    Projects
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="rounded-full border border-border bg-surface px-3 py-2 text-xs font-medium text-foreground transition hover:border-ember/60 hover:text-ember"
+                  >
+                    Contact
+                  </Link>
+                </div>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <a
+                    href="https://studysphere-x.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-border bg-background px-3 py-2 text-xs font-medium text-foreground transition hover:border-ember/60 hover:text-ember"
+                  >
+                    StudySphere live
+                  </a>
+                  <a
+                    href="https://pletto.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-border bg-background px-3 py-2 text-xs font-medium text-foreground transition hover:border-ember/60 hover:text-ember"
+                  >
+                    PLETTO live
+                  </a>
                 </div>
               </div>
             </div>
