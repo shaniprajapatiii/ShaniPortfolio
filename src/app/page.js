@@ -85,7 +85,7 @@ export default async function HomePage() {
                 <div className="rounded-3xl border border-border bg-background p-4">
                   <div className="font-semibold text-foreground">Current focus</div>
                   <ul className="mt-2 space-y-2 text-muted-foreground">
-                    <li>• Shipping The Clover.</li>
+                    <li>• Shipping PLETTO.</li>
                     <li>• Practicing Codeforces.</li>
                     <li>• Refining React apps.</li>
                     <li>• Exploring ML tooling.</li>
