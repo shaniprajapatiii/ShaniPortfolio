@@ -232,7 +232,15 @@ export default async function CodingPage() {
                ? `Rank ${formatNumber(stats.leetcode.rating)}`
                : "—",
          url: stats.leetcode?.url ?? "#",
-         badges: [stats.leetcode?.totalContributions ? `${stats.leetcode.totalContributions} active days` : "—"],
+         badges: [
+            stats.leetcode?.maxContestRating
+               ? `Max ${Math.round(stats.leetcode.maxContestRating)}`
+               : stats.leetcode?.contestRating
+                  ? `Max ${Math.round(stats.leetcode.contestRating)}`
+                  : stats.leetcode?.rating
+                     ? `Max ${formatNumber(stats.leetcode.rating)}`
+                     : "—",
+         ],
       },
       {
          platform: "Codeforces",
@@ -245,8 +253,8 @@ export default async function CodingPage() {
       {
          platform: "CodeChef",
          handle: stats.codechef?.handle ?? "—",
-         primary: stats.codechef?.rating ? `Rating ${stats.codechef.rating}` : "—",
-         secondary: stats.codechef?.solvedCount ? `${formatNumber(stats.codechef.solvedCount)} solved` : "—",
+         primary: stats.codechef?.solvedCount ? `${formatNumber(stats.codechef.solvedCount)} solved` : "—",
+         secondary: stats.codechef?.rating ? `Rating ${stats.codechef.rating}` : "—",
          url: stats.codechef?.url ?? "#",
          badges: [stats.codechef?.contests?.length ? `${stats.codechef.contests.length} contests` : "—"],
       },

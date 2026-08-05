@@ -324,6 +324,16 @@ export async function fetchLeetCodeStats() {
       : "https://leetcode.com/contest/",
   }));
 
+  const contestRatings = contestHistory
+    .map((entry) => entry.rating)
+    .filter((r) => Number.isFinite(r));
+  const maxContestRating =
+    contestRatings.length > 0
+      ? Math.max(...contestRatings)
+      : json?.data?.userContestRanking?.rating
+      ? Math.round(json.data.userContestRanking.rating)
+      : null;
+
   return {
     handle: LEETCODE_USERNAME,
     url: `https://leetcode.com/${LEETCODE_USERNAME}`,
@@ -335,6 +345,7 @@ export async function fetchLeetCodeStats() {
     contestRating: json?.data?.userContestRanking?.rating
       ? Math.round(json.data.userContestRanking.rating)
       : null,
+    maxContestRating,
     contestGlobalRanking: json?.data?.userContestRanking?.globalRanking ?? null,
     attendedContestsCount:
       json?.data?.userContestRanking?.attendedContestsCount ?? null,
