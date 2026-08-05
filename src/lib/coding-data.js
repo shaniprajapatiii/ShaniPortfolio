@@ -398,16 +398,24 @@ export async function fetchCodeforcesStats() {
     count,
   }));
 
-  const contests = ratingHistory
+    const formatSecondsDate = (secs) => {
+      if (!Number.isFinite(secs)) return null;
+      try {
+        const d = new Date(secs * 1000);
+        return Number.isFinite(d.getTime()) ? d.toISOString().slice(0, 10) : null;
+      } catch {
+        return null;
+      }
+    };
+
+    const contests = ratingHistory
     .slice(-8)
     .reverse()
     .map((item) => ({
       name: item.contestName,
       rank: item.rank,
       delta: item.newRating - item.oldRating,
-      date: new Date(item.contestStartTimeSeconds * 1000)
-        .toISOString()
-        .slice(0, 10),
+        date: formatSecondsDate(item.contestStartTimeSeconds) || "—",
       platform: "Codeforces",
       url: `https://codeforces.com/contest/${item.contestId}`,
     }));

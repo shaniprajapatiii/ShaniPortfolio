@@ -237,8 +237,8 @@ export default async function CodingPage() {
       {
          platform: "Codeforces",
          handle: stats.codeforces?.handle ?? "—",
-         primary: stats.codeforces?.rating ? `Rating ${stats.codeforces.rating}` : "—",
-         secondary: stats.codeforces?.contestCount ? `${stats.codeforces.contestCount} contests` : "—",
+         primary: stats.codeforces?.solvedCount ? `${formatNumber(stats.codeforces.solvedCount)} solved` : "—",
+         secondary: stats.codeforces?.rating ? `Rating ${stats.codeforces.rating}` : "—",
          url: stats.codeforces?.url ?? "#",
          badges: [stats.codeforces?.maxRating ? `Max ${stats.codeforces.maxRating}` : "—"],
       },
