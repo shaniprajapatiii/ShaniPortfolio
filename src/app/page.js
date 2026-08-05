@@ -43,7 +43,7 @@ export default async function HomePage() {
               <span className="text-ember">thinks.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-              Software engineer, competitive programmer and product builder. Currently shipping
+              Aspiring Software engineer, competitive programmer and product builder. Currently shipping
               full-stack apps and exploring AI engineering, system design and browser internals.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
