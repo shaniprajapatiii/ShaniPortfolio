@@ -71,7 +71,9 @@ export function ProjectsPage() {
                      </div>
                      <div className="mt-6 flex items-center gap-3 border-t border-border pt-4">
                         <a
-                           href={project.href}
+                           href={project.repo}
+                           target="_blank"
+                           rel="noopener noreferrer"
                            className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-foreground hover:text-ember"
                         >
                            <GithubIcon className="h-3.5 w-3.5" /> Code
@@ -82,7 +84,7 @@ export function ProjectsPage() {
                            rel="noopener noreferrer"
                            className="ml-auto inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-muted-foreground hover:text-ember"
                         >
-                           Details <ArrowUpRight className="h-3.5 w-3.5" />
+                           Live <ArrowUpRight className="h-3.5 w-3.5" />
                         </a>
                      </div>
                   </article>

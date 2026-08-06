@@ -48,22 +48,6 @@ export const PROJECTS = [
          "https://res.cloudinary.com/dwagwbnhm/image/upload/v1776704969/Screenshot_2026-04-20_223800_d0ycq8.png",
    },
    {
-      slug: "clover",
-      name: "Clover - AI-Powered Parametric Insurance Platform",
-      tagline:
-         "Full-stack insurtech platform protecting gig workers from weather and disruption-driven income loss",
-      description:
-         "Engineered a production-grade insurance platform combining AI risk scoring, parametric policy logic, real-time weather intelligence, and automated claims processing.",
-      category: "Full-Stack",
-      status: "Ongoing",
-      stack: ["React", "Express.js", "MongoDB", "Node.js", "Tailwind CSS"],
-      featured: true,
-      href: "https://cloverleaf-two.vercel.app",
-      repo: "https://github.com/shaniprajapatiii/CLOVER",
-      image:
-         "https://res.cloudinary.com/dwagwbnhm/image/upload/v1775894804/Screenshot_2026-04-11_133555_z3c0fx.png",
-   },
-   {
       slug: "pletto",
       name: "PLETTO — A Distributed Real-Time Collaboration Platform",
       tagline:
@@ -85,8 +69,24 @@ export const PROJECTS = [
          "Yjs",
       ],
       featured: true,
-      href: "https://github.com/shaniprajapatiii/PLETTO",
+      href: "https://pletto.vercel.app",
       repo: "https://github.com/shaniprajapatiii/PLETTO",
+   },
+   {
+      slug: "clover",
+      name: "Clover - AI-Powered Parametric Insurance Platform",
+      tagline:
+         "Full-stack insurtech platform protecting gig workers from weather and disruption-driven income loss",
+      description:
+         "Engineered a production-grade insurance platform combining AI risk scoring, parametric policy logic, real-time weather intelligence, and automated claims processing.",
+      category: "Full-Stack",
+      status: "Ongoing",
+      stack: ["React", "Express.js", "MongoDB", "Node.js", "Tailwind CSS"],
+      featured: true,
+      href: "https://cloverleaf-two.vercel.app",
+      repo: "https://github.com/shaniprajapatiii/CLOVER",
+      image:
+         "https://res.cloudinary.com/dwagwbnhm/image/upload/v1775894804/Screenshot_2026-04-11_133555_z3c0fx.png",
    },
    {
       slug: "datashield",
@@ -115,7 +115,7 @@ export const PROJECTS = [
       status: "Ongoing",
       stack: ["Next.js", "JavaScript", "Tailwind CSS"],
       featured: false,
-      href: "https://shaniprajapatiii.vercel.app",
+      href: "https://shaniprajapati.vercel.app",
       repo: "https://github.com/shaniprajapatiii/ShaniPortfolio",
    },
    {

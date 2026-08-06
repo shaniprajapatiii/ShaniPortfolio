@@ -12,7 +12,6 @@ const fetchJson = async (url, options = {}) => {
   return response.json();
 };
 
-
 const parseGithubContributions = (html) => {
   const rectMatches = [
     ...html.matchAll(
@@ -26,9 +25,9 @@ const parseGithubContributions = (html) => {
     }));
   }
 
-  const cellTags = [
-    ...html.matchAll(/<td\b[^>]*data-date="[^"]*"[^>]*>/g),
-  ].map((match) => match[0]);
+  const cellTags = [...html.matchAll(/<td\b[^>]*data-date="[^"]*"[^>]*>/g)].map(
+    (match) => match[0],
+  );
 
   const cells = cellTags
     .map((tag) => ({
@@ -39,9 +38,11 @@ const parseGithubContributions = (html) => {
     .filter((cell) => cell.date);
 
   const tooltipById = new Map(
-    [...html.matchAll(/<tool-tip[^>]*for="([^"]+)"[^>]*>([\s\S]*?)<\/tool-tip>/g)].map(
-      (match) => [match[1], match[2].trim()],
-    ),
+    [
+      ...html.matchAll(
+        /<tool-tip[^>]*for="([^"]+)"[^>]*>([\s\S]*?)<\/tool-tip>/g,
+      ),
+    ].map((match) => [match[1], match[2].trim()]),
   );
 
   return cells.map((cell) => {
@@ -141,7 +142,11 @@ const mergeTopics = (leetcodeTopics = [], codeforcesTopics = []) => {
   return sorted.map((item, index) => {
     const percentile = n <= 1 ? 0 : index / (n - 1);
     const level =
-      percentile < 0.34 ? "Strong" : percentile < 0.67 ? "Comfortable" : "Learning";
+      percentile < 0.34
+        ? "Strong"
+        : percentile < 0.67
+          ? "Comfortable"
+          : "Learning";
     return { ...item, level };
   });
 };
@@ -331,8 +336,8 @@ export async function fetchLeetCodeStats() {
     contestRatings.length > 0
       ? Math.max(...contestRatings)
       : json?.data?.userContestRanking?.rating
-      ? Math.round(json.data.userContestRanking.rating)
-      : null;
+        ? Math.round(json.data.userContestRanking.rating)
+        : null;
 
   return {
     handle: LEETCODE_USERNAME,
@@ -409,24 +414,24 @@ export async function fetchCodeforcesStats() {
     count,
   }));
 
-    const formatSecondsDate = (secs) => {
-      if (!Number.isFinite(secs)) return null;
-      try {
-        const d = new Date(secs * 1000);
-        return Number.isFinite(d.getTime()) ? d.toISOString().slice(0, 10) : null;
-      } catch {
-        return null;
-      }
-    };
+  const formatSecondsDate = (secs) => {
+    if (!Number.isFinite(secs)) return null;
+    try {
+      const d = new Date(secs * 1000);
+      return Number.isFinite(d.getTime()) ? d.toISOString().slice(0, 10) : null;
+    } catch {
+      return null;
+    }
+  };
 
-    const contests = ratingHistory
+  const contests = ratingHistory
     .slice(-8)
     .reverse()
     .map((item) => ({
       name: item.contestName,
       rank: item.rank,
       delta: item.newRating - item.oldRating,
-        date: formatSecondsDate(item.contestStartTimeSeconds) || "—",
+      date: formatSecondsDate(item.contestStartTimeSeconds) || "—",
       platform: "Codeforces",
       url: `https://codeforces.com/contest/${item.contestId}`,
     }));
@@ -506,7 +511,9 @@ export async function fetchCodeChefStats() {
               : safeInt(entry.rating) - safeInt(arr[index - 1].rating),
           date: entry.end_date ? entry.end_date.slice(0, 10) : entry.getyear,
           platform: "CodeChef",
-          url: entry.code ? `https://www.codechef.com/${entry.code}` : undefined,
+          url: entry.code
+            ? `https://www.codechef.com/${entry.code}`
+            : undefined,
         }))
         .reverse();
     } catch {

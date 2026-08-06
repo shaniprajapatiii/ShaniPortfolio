@@ -176,7 +176,7 @@ export default async function HomePage() {
             return (
               <a
                 key={project.slug}
-                href={project.href}
+                href={project.repo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`bento-card group relative flex flex-col justify-between overflow-hidden p-6 ${span}`}
