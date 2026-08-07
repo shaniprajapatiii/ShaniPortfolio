@@ -1,6 +1,7 @@
 import Script from "next/script";
 import { JetBrains_Mono, Work_Sans } from "next/font/google";
 import "./globals.css";
+import SplashCursor from "../components/SplashCursor";
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
@@ -52,7 +53,10 @@ export default function RootLayout({ children }) {
           {themeInitScript}
         </Script>
       </head>
-      <body className="min-h-screen bg-background text-foreground antialiased">{children}</body>
+      <body className="min-h-screen bg-background text-foreground antialiased">
+        <SplashCursor />
+        {children}
+      </body>
     </html>
   );
 }
