@@ -14,14 +14,14 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Shani Prajapati — Software Engineer & Competitive Programmer",
+  title: "Shani Prajapati — Aspiring Software Engineer & Competitive Programmer",
   description:
-    "Portfolio of Shani Prajapati — software engineer, competitive programmer and product builder.",
+    "Portfolio of Shani Prajapati — Aspiring software engineer, competitive programmer and product builder.",
   authors: [{ name: "Shani Prajapati" }],
   openGraph: {
-    title: "Shani Prajapati — Software Engineer",
+    title: "Shani Prajapati — Aspiring Software Engineer",
     description:
-      "Software engineer, competitive programmer and product builder. 500+ problems, 15+ projects.",
+      "Aspiring software engineer, competitive programmer and product builder. 500+ problems, 15+ projects.",
     type: "website",
   },
   twitter: {
